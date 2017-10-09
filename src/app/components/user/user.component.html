@@ -2,14 +2,14 @@
 
 
 
-<form (submit)='addUser($event)'>
+<form >
   <div class="panel-heading panel panel-default form-group">
     <h3>Add a new User</h3>
 
     <div class="panel panel-default">
       <div class="panel-body">
         <label>Student name:</label>
-        <input type="text" class="form-control" [(ngModel)]="username" name="username4334" placeholder="Name">
+        <input [(ngModel)]="userName" type="text" class="form-control" name="username4334" placeholder="Name">
 
         <label>Password:</label>
         <input type="password" class="form-control" [(ngModel)]="password1" name="password1343" placeholder="Password">
@@ -20,7 +20,7 @@
         <label>You will need to put your password every time you want to make a journal entry.</label>
         <br><br>
 
-        <button class="btn btn-success" type="submit" >Create user</button>
+        <button class="btn btn-success" (click)="addUser()" >Create user</button>
 
       </div>
     </div>

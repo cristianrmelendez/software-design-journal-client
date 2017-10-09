@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Http, Headers} from '@angular/http';
-import 'rxjs/add/operator/map';
-import { HttpModule } from '@angular/http';
+import { PostService } from '../../services/post.service';
+import { UserService } from '../../services/user.service';
+import { Post } from '../../models/post';
+import { User } from '../../models/user';
+import { Usertopost } from '../../models/usertopost';
+
 
 @Component({
   selector: 'app-user',
@@ -10,33 +13,48 @@ import { HttpModule } from '@angular/http';
 })
 export class UserComponent implements OnInit {
 
-	username: string;
+	userName: string;
   password1: string;
   password2: string
 
   users:User[];
 
-  constructor(private http: Http) {
-  }
+  constructor(private userServ: UserService,
+    private postServ: PostService) { }
+
+
   ngOnInit() {
   }
 
-  addUser(event){
-  console.log('Entro aqui');
-  var newUser = {username: this.username,
-            password: this.password1};
+  public addUser(){
 
-  var headers = new Headers();
-  headers.append('Content-Type','application/json');
+          if(this.password1 == this.password2){
+    
+            var userToCreate: Usertopost =  {
+            userName: this.userName,
+            password: this.password1
+          }
+    
+          this.userServ.addUser(userToCreate).subscribe(
+            response=> {
+              
+              if(response.success== true){
+                console.log("User created succesfully")
+              }
+              else{
+                console.log("User not created")
+              }
+            },
+          )
+      }
 
-  console.log(this.http.post('http://localhost:4200/users', JSON.stringify(newUser), {headers: headers}));
+      else{
+        console.log("Password are not the same");
+      }
 
 }
 
 }
 
-interface User{
-username:string,
-password1:string
-}
+
 

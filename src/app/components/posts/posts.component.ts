@@ -4,9 +4,9 @@ import { UserService } from '../../services/user.service';
 import { Post } from '../../models/post';
 import { User } from '../../models/user';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { Injectable } from '@angular/core';
 
-
-
+@Injectable()
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',

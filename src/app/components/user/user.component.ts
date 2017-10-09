@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { PostService } from '../../services/post.service';
 import { UserService } from '../../services/user.service';
+
 import { Post } from '../../models/post';
 import { User } from '../../models/user';
 import { Usertopost } from '../../models/usertopost';
+import { Injectable } from '@angular/core';
 
+@Injectable()
 
 @Component({
   selector: 'app-user',
@@ -19,8 +21,7 @@ export class UserComponent implements OnInit {
 
   users:User[];
 
-  constructor(private userServ: UserService,
-    private postServ: PostService) { }
+  constructor(private userServ: UserService) { }
 
 
   ngOnInit() {

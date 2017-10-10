@@ -7,7 +7,10 @@ import { UserComponent } from './components/user/user.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-
+import { UserService } from './services/user.service';
+import { PostService } from './services/post.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 const appRoutes: Routes = [
 { path: 'users' , component: UserComponent },
@@ -24,15 +27,15 @@ const appRoutes: Routes = [
   ],
   imports: [
       BrowserModule,
-
       RouterModule.forRoot(
       appRoutes,
       { enableTracing: true } // <-- debugging purposes only
 ),    FormsModule,
-      HttpModule
+      HttpModule,
+      NgbModule.forRoot()
 
   ],
-  providers: [],
+  providers: [UserService, PostService],
   bootstrap: [AppComponent]
 })
 

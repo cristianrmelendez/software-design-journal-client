@@ -4,6 +4,7 @@ import { UserService } from '../../services/user.service';
 import { Post } from '../../models/post';
 import { User } from '../../models/user';
 import { Usertopost } from '../../models/usertopost';
+
 import { Injectable } from '@angular/core';
 
 @Injectable()
@@ -25,6 +26,7 @@ export class UserComponent implements OnInit {
 
 
   ngOnInit() {
+
   }
 
   public addUser(){
